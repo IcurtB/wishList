@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bookList {
+    width: 400px;
+    border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.bookList > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.bookList > div > p {
+    text-align: center;
+}
+.bookList img{
+    width: 120px;
+    height: 200px;
+}
