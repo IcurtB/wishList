@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
+import { useForm, SubmitHandler, Resolver } from "react-hook-form"
 import Books from "./components/Books/Books";
 import Filter from "./components/Filter/Filter";
 import { booksData } from "./data/booksData"
 import {IBooks} from "./interface";
-import set = Reflect.set;
-interface sortByType  {
-    author?: object
-}
+import AddBookForm from "./components/AddBookForm/AddBookForm";
+import Info from "./components/Info/Info"
+
+
 function App() {
     const [books, setBooks] = useState<IBooks[]>(booksData)
     const [active ,setActive] = useState<boolean>(false)
-    // console.log(booksData);
+    console.log(booksData);
 
 
     // console.log(books)
@@ -26,7 +27,15 @@ function App() {
         setActive(active ? false : true)
         active ? setBooks(booksData) : setBooks(booksData.sort(sortBy))
     }
-
+    /***
+     * знаю что это корявое решение,
+     * но я по другому пока не придумал.
+     * В обычном crud я бы сделал эту логику понятной,
+     * но так как я беру данные из внутреннего хранилища - это выглядит по дурацкому.
+     ***/
+    const addBook:SubmitHandler<IBooks> = (data:IBooks):void => {
+        booksData.push(data)
+    }
 
 
     return (
@@ -36,6 +45,8 @@ function App() {
               sortBy={sortBy}
               filter={filter}
       />
+      <AddBookForm addBook={addBook}/>
+      <Info total={books.length}/>
     </>
   );
 }

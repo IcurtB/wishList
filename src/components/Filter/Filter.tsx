@@ -8,10 +8,6 @@ type changeInput = {
     filter: (e:React.ChangeEvent<HTMLInputElement>) => void
 }
 const Filter:React.FC<changeInput> = ({onChangeAuthor, sortBy, filter, }) => {
-    // const filter = () => {
-    //     setActive(active ? false : true)
-    //
-    // }
     return(
         <>
             <input type="search" onChange={(e) => onChangeAuthor(e)} />
