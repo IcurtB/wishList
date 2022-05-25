@@ -8,4 +8,5 @@ export type IBooks = {
     pages: number,
     title: string,
     year: number,
+    genre: string
 }
