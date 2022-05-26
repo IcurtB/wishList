@@ -3,7 +3,7 @@ import {IBooks} from "../../interface";
 import {SubmitHandler, useForm} from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
-
+import s from "./AddBookFrom.module.css"
 type bookForm = {
     addBook: any
 }
@@ -28,14 +28,16 @@ const AddBookForm:React.FC<bookForm> = ({addBook}) => {
         handleSubmit,
         formState: { errors }
     } = useForm<IBooks>({mode:"onBlur", resolver: yupResolver(validateSchema)});
-    // <input type="text"
-    //        {...register("id", {
-    //            required: "Your account is not available!"
-    //        })}
-    // />
+    /*** Этого id не должен был быть тут.
+     <input type="text" name="id"/>
+     При обычном post запросе он должен был добавлятся сразу.
+
+     Валидация рабочая. Отликаяется на простой submit и onBlur,  предупреждая что нужно заполнить.
+     ***/
+
     return(
         <>
-            <form onSubmit={handleSubmit(addBook)}>
+            <form className={s.filterForm} onSubmit={handleSubmit(addBook)}>
                 <input type="text"
                        {...register("title")}
                 />

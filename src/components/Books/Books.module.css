@@ -6,7 +6,6 @@
 .bookList {
     width: 400px;
     border: 1px solid red;
-    display: flex;
     flex-wrap: wrap;
 
 }
@@ -14,12 +13,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 .bookList > div > p {
     text-align: center;
 }
-.bookList img{
-    width: 120px;
-    height: 200px;
+
+.false{
+    display: none;
+}
+.true{
+    display: block;
+    width: 80px;
+    height: 120px;
+
 }
